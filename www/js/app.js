@@ -24,29 +24,45 @@ angular.module('starter', ['ionic', 'ngCordova'])
 .controller('MapController', ['$scope', '$cordovaGeolocation', '$ionicLoading', function($scope, $cordovaGeolocation, $ionicLoading) {
 
 
-
     $scope.locate = function() {
         var posOptions = {
             timeout: 10000,
             enableHighAccuracy: true
         };
 
-        
+        // loading show
+        $ionicLoading.show();
 
         $cordovaGeolocation
             .getCurrentPosition(posOptions)
             .then(function(position) {
 
-                // get position.coords.latitude
-                // get position.coords.longitude
+                // loading hide
+                $ionicLoading.hide();
+
                 var lat = position.coords.latitude;
                 var lng = position.coords.longitude;
 
-                // log in alert
-                
-                
-                
-            }, function(err) {
+                alert("Got position: " + lat + ", " + lng);
+
+
+                // var myLocation = new google.maps.LatLng(lat, lng);
+
+                // var map = new google.maps.Map(document.getElementById('map'), {
+                //     mapTypeId: google.maps.MapTypeId.ROADMAP,
+                //     center: myLocation,
+                //     zoom: 15
+                // });
+
+                // var marker = new google.maps.Marker({
+                //     map: map,
+                //     position: myLocation
+                // });
+
+            }, function(error) {
+
+                // loading hide
+                $ionicLoading.hide();
 
                 if (error.code == PositionError.PERMISSION_DENIED) {
                     alert("Permission denied. check setting");
