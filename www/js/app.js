@@ -46,18 +46,18 @@ angular.module('starter', ['ionic', 'ngCordova'])
                 alert("Got position: " + lat + ", " + lng);
 
 
-                // var myLocation = new google.maps.LatLng(lat, lng);
+                var myLocation = new google.maps.LatLng(lat, lng);
 
-                // var map = new google.maps.Map(document.getElementById('map'), {
-                //     mapTypeId: google.maps.MapTypeId.ROADMAP,
-                //     center: myLocation,
-                //     zoom: 15
-                // });
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    center: myLocation,
+                    zoom: 15
+                });
 
-                // var marker = new google.maps.Marker({
-                //     map: map,
-                //     position: myLocation
-                // });
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: myLocation
+                });
 
             }, function(error) {
 
